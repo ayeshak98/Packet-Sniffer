@@ -5,7 +5,6 @@ from scapy.layers.inet import TCP, UDP
 from scapy.layers.inet import ICMP
 from scapy.layers.dhcp import BOOTP
 from scapy.layers.l2 import ARP
-from scapy.layers.l2 import Ether
 import time
 
 # Define the packet sniffer function
