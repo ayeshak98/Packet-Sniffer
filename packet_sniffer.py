@@ -71,7 +71,7 @@ def packet_sniffer(packet):
         except IndexError as e:
             print("Error while handling BOOTP packet:", e)
 
-sniff(prn=packet_sniffer, filter="arp or icmp or tcp or udp or bootp", store=0)
+
 
 # Define the duration to run the packet sniffer (in seconds)
 duration = 120
@@ -82,8 +82,5 @@ start_time = time.time()
 # Sniff packets for the specified duration
 while time.time() - start_time <= duration:
 
+ sniff(prn=packet_sniffer, filter="arp or icmp or tcp or udp or bootp", store=0, timeout=duration)
  print("Packet sniffing complete.")
-
-    sniff(prn=packet_sniffer, filter="arp or icmp or tcp or udp or bootp", store=0)
-
-print("Packet sniffing complete.")
