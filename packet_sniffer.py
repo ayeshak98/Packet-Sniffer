@@ -1,5 +1,6 @@
 # Import the necessary libraries
-from scapy.all import *
+from scapy.all import sniff
+from scapy.layers.inet import IP
 from scapy.layers.inet import TCP, UDP
 from scapy.layers.inet import ICMP
 from scapy.layers.dhcp import BOOTP
@@ -38,7 +39,7 @@ def packet_sniffer(packet):
             # handle TCP packets
             tcp_pkt = packet[TCP]
             print("TCP packet detected:")
-            print("Source IP:", packet(IP).src)
+            print("Source IP:", packet[IP].src)
             print("Source Port:", tcp_pkt.sport)
             print("Destination IP:", packet[IP].dst)
             print("Destination Port:", tcp_pkt.dport)
@@ -70,6 +71,7 @@ def packet_sniffer(packet):
         except IndexError as e:
             print("Error while handling BOOTP packet:", e)
 
+sniff(prn=packet_sniffer, filter="arp or icmp or tcp or udp or bootp", store=0)
 
 # Define the duration to run the packet sniffer (in seconds)
 duration = 120
@@ -79,6 +81,8 @@ start_time = time.time()
 
 # Sniff packets for the specified duration
 while time.time() - start_time <= duration:
+
+ print("Packet sniffing complete.")
 
     sniff(prn=packet_sniffer, filter="arp or icmp or tcp or udp or bootp", store=0)
 
