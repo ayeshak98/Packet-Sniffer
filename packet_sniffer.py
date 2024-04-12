@@ -19,7 +19,7 @@ def packet_sniffer(packet):
             print("Source IP:", arp_pkt.psrc)
             print("Destination MAC", arp_pkt.hwdst)
             print("Destination IP:", arp_pkt.pdst)
-            # code for analyzing arp goes here
+            
         except IndexError as e:
             print("Error while handling ARP packet:", e)
 
@@ -30,7 +30,7 @@ def packet_sniffer(packet):
             print("ICMP Packet Detected:")
             print("Type:", icmp_pkt.type)
             print("Code:", icmp_pkt.code)
-            # code for analyzing icmp goes here
+           
         except IndexError as e:
             print("Error while handling ICMP packet:", e)
 
@@ -43,7 +43,7 @@ def packet_sniffer(packet):
             print("Source Port:", tcp_pkt.sport)
             print("Destination IP:", packet[IP].dst)
             print("Destination Port:", tcp_pkt.dport)
-            # code for analyzing tcp goes here
+            
         except IndexError as e:
             print("Error while handling TCP packet:", e)
 
@@ -56,7 +56,7 @@ def packet_sniffer(packet):
             print("Source Port:", udp_pkt.sport)
             print("Destination IP:", packet[IP].dst)
             print("Destination Port:", udp_pkt.dport)
-            # code for analyzing udp goes here
+           
         except IndexError as e:
             print("Error while handling UDP packet:", e)
 
@@ -67,7 +67,7 @@ def packet_sniffer(packet):
             print("BOOTP Packet Detected:")
             print("Source MAC:", bootp_pkt.chaddr)
             print("SOURCE IP:", bootp_pkt.ciaddr)
-            # code for analyzing bootp goes here
+           
         except IndexError as e:
             print("Error while handling BOOTP packet:", e)
 
